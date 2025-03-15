@@ -1,0 +1,280 @@
+@keyframes gradient {
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Animation Container */
+.animation-container {
+    position: relative;
+    width: 400px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Dot Animation */
+.dot {
+    position: absolute;
+    background-color: white;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    z-index: 10;
+    opacity: 0;
+}
+
+.dot.animate-in {
+    animation: dotAppear 0.5s ease-in-out forwards;
+}
+
+.dot.animate-out {
+    animation: dotDisappear 0.5s ease-in-out forwards;
+}
+
+@keyframes dotAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes dotDisappear {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+/* Center Line Animation */
+.center-line {
+    position: absolute;
+    background-color: white;
+    width: 2px;
+    height: 0;
+    z-index: 9;
+    opacity: 0;
+}
+
+.center-line.animate-in {
+    animation: lineGrow 0.5s ease-in-out 0.5s forwards;
+}
+
+.center-line.animate-out {
+    animation: lineShrink 0.5s ease-in-out forwards;
+}
+
+@keyframes lineGrow {
+    0% {
+        height: 0;
+        opacity: 0;
+    }
+    100% {
+        height: 100px;
+        opacity: 1;
+    }
+}
+
+@keyframes lineShrink {
+    0% {
+        height: 100px;
+        opacity: 1;
+    }
+    100% {
+        height: 0;
+        opacity: 0;
+    }
+}
+
+/* Box Container */
+.box-container {
+    position: absolute;
+    display: flex;
+    width: 0;
+    height: 100px;
+    opacity: 0;
+    z-index: 8;
+}
+
+.box-container.animate-in {
+    animation: boxesAppear 0.8s ease-in-out 1s forwards;
+}
+
+.box-container.animate-out {
+    animation: boxesDisappear 0.8s ease-in-out forwards;
+}
+
+@keyframes boxesAppear {
+    0% {
+        width: 0;
+        opacity: 0;
+    }
+    100% {
+        width: 400px;
+        opacity: 1;
+    }
+}
+
+@keyframes boxesDisappear {
+    0% {
+        width: 400px;
+        opacity: 1;
+    }
+    100% {
+        width: 0;
+        opacity: 0;
+    }
+}
+
+/* Left Box (Solid) */
+.box-left {
+    width: 50%;
+    height: 100%;
+    background-color: white;
+    position: relative;
+    overflow: hidden;
+    transform-origin: right center;
+}
+
+/* Right Box (Transparent with Border) */
+.box-right {
+    width: 50%;
+    height: 100%;
+    border: 2px solid white;
+    border-left: none;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    transform-origin: left center;
+}
+
+/* Text Containers */
+.text-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+}
+
+.text-container-left {
+    color: var(--color-primary);
+    transform: translateX(-50px);
+    clip-path: inset(0 0 0 100%);
+}
+
+.text-container-right {
+    color: white;
+    transform: translateX(50px);
+    clip-path: inset(0 100% 0 0);
+}
+
+/* Text Animation Classes */
+.text-container.text-show {
+    opacity: 1;
+    animation: textShow 0.6s ease-in-out forwards;
+}
+
+.text-container.text-hide {
+    opacity: 1;
+    animation: textHide 0.6s ease-in-out forwards;
+}
+
+.text-container-left.text-show {
+    animation: textShowLeft 0.6s ease-in-out forwards;
+}
+
+.text-container-right.text-show {
+    animation: textShowRight 0.6s ease-in-out forwards;
+}
+
+.text-container-left.text-hide {
+    animation: textHideLeft 0.6s ease-in-out forwards;
+}
+
+.text-container-right.text-hide {
+    animation: textHideRight 0.6s ease-in-out forwards;
+}
+
+/* Text content change effect - no delay */
+.text-container.text-change {
+    animation-delay: 0s !important;
+}
+
+/* IMPROVED: Text Animation Keyframes - full visibility during slide */
+@keyframes textShowLeft {
+    0% {
+        opacity: 1;
+        transform: translateX(80px);
+        clip-path: inset(0 0 0 100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+@keyframes textShowRight {
+    0% {
+        opacity: 1;
+        transform: translateX(-80px);
+        clip-path: inset(0 100% 0 0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+@keyframes textHideLeft {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+        clip-path: inset(0 0 0 0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(80px);
+        clip-path: inset(0 0 0 100%);
+    }
+}
+
+@keyframes textHideRight {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+        clip-path: inset(0 0 0 0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-80px);
+        clip-path: inset(0 100% 0 0);
+    }
+}
+
+/* Text Styling */
+.text {
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    will-change: transform;
+}
