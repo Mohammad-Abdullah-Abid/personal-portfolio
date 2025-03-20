@@ -8,6 +8,20 @@
     --color-cool-gray: #83949e;
     --color-soft-blue: #98aab4;
     --color-medium-gray: #62626b;
+    --animate-gradient-x: gradient 3s ease infinite;
+    --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    --animate-ping: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+
+    @keyframes gradient {
+        0% {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
 }
 
 :root {
